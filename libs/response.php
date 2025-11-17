@@ -12,6 +12,8 @@
             header("HTTP/1.1 $status $statusText");
             echo json_encode($data);
             $this->finished = true;
+
+            
         }
 
         private function _requestStatus($code) {

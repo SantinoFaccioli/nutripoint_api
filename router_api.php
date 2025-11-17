@@ -8,5 +8,11 @@
 
     $router->addRoute('productos' , 'GET' , 'ProductosController' , 'listarOfertas'); // aca deberias hacer el listar todos xd
 
+    $router->addRoute('productos/:id' , 'GET' , 'ProductosController' , 'listarProductoID'); // obtener un producto a partir de su id 
+
+    $router->addRoute('productos' , 'POST' , 'ProductosController' , 'crearProducto'); // agrega un producto en oferta
+
+    $router->addRoute('productos/categoria/:id_categoria', 'GET' , 'ProductosController' , 'listarProductoCategoria');//filtro por categoria
+
 
     $router->route($_GET["resource"], $_SERVER['REQUEST_METHOD']);
