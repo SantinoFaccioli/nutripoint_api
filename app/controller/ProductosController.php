@@ -74,4 +74,36 @@ class ProductosController {
         return $res->json($productos, 200);
     }
 
+    public function getListadoOrdenado($req, $res) {
+        
+        $sort = $req->query->sort ?? null;
+        $order = $req->query->order ?? null;
+
+        $productos = $this->model->getProductosOrdenados($sort, $order);
+
+        return $res->json($productos, 200);
+    }
+    public function updateProducto($req, $res) {
+        
+        $id = $req->params->id;
+
+        $data = $req->body;
+
+        $productoExistente = $this->model->getProductoById($id);
+
+        if (!$productoExistente) {
+            return $res->json("El producto con id=$id no existe.", 404);
+        }
+
+        if (empty($data->nombre) || empty($data->precio) || empty($data->stock) || 
+            empty($data->descripcion) || empty($data->id_categoria)) {
+            
+            return $res->json("Faltan datos obligatorios para la modificación.", 400);
+        }
+
+        $this->model->updateProductoModel($id, $data);
+
+        return $res->json("Producto con id=$id actualizado con éxito.", 200);
+    }
+
 }

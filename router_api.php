@@ -6,7 +6,11 @@
 
     $router = new Router();
 
-    $router->addRoute('productos' , 'GET' , 'ProductosController' , 'listarOfertas'); // aca deberias hacer el listar todos xd
+    $router->addRoute('productos' , 'GET' , 'ProductosController' , 'listarOfertas'); // ya se no necesito indicaciones como una nena :/
+
+    $router->addRoute('productos/todos', 'GET', 'ProductosController', 'getListadoOrdenado');
+    
+    $router->addRoute('productos/:id', 'PUT', 'ProductosController', 'updateProducto');
 
     $router->addRoute('productos/:id' , 'GET' , 'ProductosController' , 'listarProductoID'); // obtener un producto a partir de su id 
 

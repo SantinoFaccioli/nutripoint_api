@@ -54,4 +54,52 @@
             
             return $productos;
         }
+
+        public function getProductosOrdenados($sort, $order) {
+           
+            $columnasPermitidas = ['id_producto', 'nombre', 'precio', 'stock', 'id_categoria'];
+
+            $sql = "SELECT * FROM productos";
+
+            if (isset($sort) && in_array(strtolower($sort), $columnasPermitidas)) {
+                
+                $sql .= " ORDER BY " . $sort;
+
+                if (isset($order) && strtoupper($order) == 'DESC') {
+                    $sql .= " DESC";
+                } else {
+                    $sql .= " ASC";
+                }
+            }
+           
+            $query = $this->db->prepare($sql);
+            $query->execute();
+            
+            return $query->fetchAll(PDO::FETCH_OBJ);
+        }
+        public function updateProductoModel($id, $data) {
+            
+            $sql = "UPDATE productos SET 
+                        nombre = ?, 
+                        precio = ?, 
+                        stock = ?, 
+                        descripcion = ?, 
+                        id_categoria = ?,
+                        en_oferta = ?,
+                        imagen_producto = ?
+                    WHERE id_producto = ?";
+
+            $query = $this->db->prepare($sql);
+
+            $query->execute([
+                $data->nombre,
+                $data->precio,
+                $data->stock,
+                $data->descripcion,
+                $data->id_categoria,
+                $data->en_oferta ?? 0, 
+                $data->imagen_producto ?? null, 
+                $id
+            ]);
+        }
     }
