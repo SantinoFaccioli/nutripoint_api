@@ -3,8 +3,12 @@
 
     require_once './app/controller/ProductosController.php';
 
+   
+
 
     $router = new Router();
+
+     $router->setDefaultRoute('ProductosController', 'error404');
 
     $router->addRoute('productos' , 'GET' , 'ProductosController' , 'listarOfertas'); // ya se no necesito indicaciones como una nena :/
 

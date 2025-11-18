@@ -12,6 +12,10 @@ class ProductosController {
         
     }
 
+    public function error404($req, $res){
+        $res->json(["error" => "Recurso no encontrado"], 404);
+    }
+
    public function listarOfertas($req, $res) {
  
         $productos = $this->model->listarTodos();
