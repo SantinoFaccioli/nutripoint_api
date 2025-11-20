@@ -84,27 +84,27 @@ Retorna solo los productos marcados como "en oferta" (`en_oferta = 1`).
 
 * **URL:** `productos`
 * **Método:** `GET`
-* **[Santino: Por favor, completá cualquier detalle adicional aquí]**
+
 
 #### 2. Obtener un Producto por ID (en Oferta)
 Retorna un único producto (solo si está en oferta).
 
 * **URL:** `productos/:id` (ej: `/api/productos/3`)
 * **Método:** `GET`
-* **[ a completar]**
+
 
 #### 3. Crear un Producto (POST)
 Agrega un nuevo producto a la base de datos.
 
 * **URL:** `productos`
 * **Método:** `POST`
-* **[ a completar]**
+
 
 #### 4. Filtrar Productos por Categoría (Opcional)
 Retorna productos en oferta que pertenecen a una categoría específica.
 
 * **URL:** `productos/categoria/:id_categoria` (ej: `/api/productos/categoria/2`)
 * **Método:** `GET`
-* **[ a completar]**
+
 
 ````
